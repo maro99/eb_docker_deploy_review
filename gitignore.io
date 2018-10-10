@@ -1,8 +1,8 @@
 
 # Created by https://www.gitignore.io/api/git,linux,macos,python,django,pycharm+all
 
-.secrets/
-
+/.secrets
+/.idea
 
 ### Django ###
 *.log
