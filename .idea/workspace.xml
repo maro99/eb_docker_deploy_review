@@ -11,20 +11,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="gitignore.io" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/gitignore.io">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="10" lean-forward="true" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="base.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.secrets/base.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
               <caret line="2" column="1" lean-forward="true" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gitignore.io" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/gitignore.io">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -42,7 +42,7 @@
       <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/config/settings/base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1800">
+            <state relative-caret-position="1755">
               <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="120" />
             </state>
           </provider>
@@ -88,25 +88,7 @@
             <path>
               <item name="eb-docker-deploy" type="b2602c69:ProjectViewProjectNode" />
               <item name="eb-docker-deploy" type="462c0819:PsiDirectoryNode" />
-              <item name=".secrets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="eb-docker-deploy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eb-docker-deploy" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="eb-docker-deploy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eb-docker-deploy" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="eb-docker-deploy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eb-docker-deploy" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-              <item name="settings" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -175,18 +157,18 @@
     <confirmRemoveEmptyChangelist value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/config/settings/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/settings/local.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config/settings/base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1800">
+        <state relative-caret-position="1755">
           <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="120" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/settings/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/.secrets/base.json">
       <provider selected="true" editor-type-id="text-editor">
@@ -197,8 +179,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/gitignore.io">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+        <state relative-caret-position="180">
+          <caret line="12" column="10" lean-forward="true" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
         </state>
       </provider>
     </entry>
