@@ -23,6 +23,8 @@ data = json.loads(json_data)
 SECRET_KEY = data["SECRET_KEY"]
 
 
+AUTH_USER_MODEL = 'members.User'
+
 # Application definition
 
 INSTALLED_APPS = [
