@@ -6,6 +6,8 @@ import argparse
 
 
 # 사용자가 입력한 mode
+import sys
+
 
 def build_base():
     print('build_base_called')
@@ -50,12 +52,17 @@ def build_dev():
 
 def mode_function(mode):
 
-    if mode =='base':
-        build_base()
-    elif mode == 'local':
-        build_local()
-    elif mode == 'dev':
-        build_dev()
+    if mode in MODES:
+        cur_module = sys.modules[__name__]
+        # getattr 결과로 function와서 가져오자마자 바로 호출한 것.
+        getattr(cur_module, f'build_{mode}')()
+
+    # if mode =='base':
+    #     build_base()
+    # elif mode == 'local':
+    #     build_local()
+    # elif mode == 'dev':
+    #     build_dev()
     else:
         raise ValueError(f'{MODES} 에 속하는 모드만 가능합니다.')
 
