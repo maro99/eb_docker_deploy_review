@@ -34,12 +34,28 @@ def build_local():
         os.remove('requirements.txt')
 
 
+def build_dev():
+    print('build_dev_called')
+
+    try:
+        # pipenv lock으로 requirements.txt 생성
+        subprocess.call('pipenv lock --requirements > requirements.txt', shell=True)
+        # docker.build
+        subprocess.call('docker build -t eb-docker:dev -f Dockerfile.dev .',shell=True)
+
+    finally:
+        # 끝난 후 requirements.txt 파일 삭제
+        os.remove('requirements.txt')
+
+
 def mode_function(mode):
 
     if mode =='base':
         build_base()
     elif mode == 'local':
         build_local()
+    elif mode == 'dev':
+        build_dev()
     else:
         raise ValueError(f'{MODES} 에 속하는 모드만 가능합니다.')
 
@@ -47,7 +63,7 @@ def mode_function(mode):
 
 if __name__ =='__main__':
 
-    MODES = ['base', 'local']
+    MODES = ['base', 'local','dev']
 
     # ./build.py --mode <mode>
     # ./build.py -m<mode>
@@ -69,6 +85,7 @@ if __name__ =='__main__':
             print('Select mode')
             print('1.base')
             print('2.local')
+            print('3. dev')
             selected_mode = input('Choice:')
 
             try:
@@ -76,7 +93,7 @@ if __name__ =='__main__':
                 mode =MODES[mode_index]
                 break
             except IndexError:
-                print('1~2 번을 입력하세요')
+                print('1~3 번을 입력하세요')
 
     # 선택된 mode에 해당하는 함수를 실행
     mode_function(mode)
