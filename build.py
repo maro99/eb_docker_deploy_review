@@ -90,7 +90,7 @@ if __name__ =='__main__':
     # ./build.py -m<mode>
     parser = argparse.ArgumentParser()
     parser.add_argument('-m', '--mode',
-                        help='Docker build mode[base,local]'
+                        help='Docker build mode[{}]'.format(','.join(MODES))
                         )
 
     args = parser.parse_args()
@@ -104,10 +104,8 @@ if __name__ =='__main__':
     else:
         while True:
             print('Select mode')
-            print('1.base')
-            print('2.local')
-            print('3. dev')
-            print('4. production')
+            for index, mode in enumerate(MODES, start=1):
+                print(f'{index}. {mode}')
             selected_mode = input('Choice:')
 
             try:
