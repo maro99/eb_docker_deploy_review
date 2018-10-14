@@ -2,11 +2,11 @@
 import os
 import subprocess
 import argparse
+import sys
 
 
 
 # 사용자가 입력한 mode
-import sys
 
 
 def build_base():
@@ -50,6 +50,20 @@ def build_dev():
         os.remove('requirements.txt')
 
 
+def build_production():
+    print('build_production_called')
+
+    try:
+        # pipenv lock으로 requirements.txt 생성
+        subprocess.call('pipenv lock --requirements > requirements.txt', shell=True)
+        # docker.build
+        subprocess.call('docker build -t eb-docker:production -f Dockerfile.production .',shell=True)
+
+    finally:
+        # 끝난 후 requirements.txt 파일 삭제
+        os.remove('requirements.txt')
+
+
 def mode_function(mode):
 
     if mode in MODES:
@@ -70,7 +84,7 @@ def mode_function(mode):
 
 if __name__ =='__main__':
 
-    MODES = ['base', 'local','dev']
+    MODES = ['base', 'local','dev','production']
 
     # ./build.py --mode <mode>
     # ./build.py -m<mode>
@@ -93,6 +107,7 @@ if __name__ =='__main__':
             print('1.base')
             print('2.local')
             print('3. dev')
+            print('4. production')
             selected_mode = input('Choice:')
 
             try:
@@ -100,7 +115,7 @@ if __name__ =='__main__':
                 mode =MODES[mode_index]
                 break
             except IndexError:
-                print('1~3 번을 입력하세요')
+                print('1~4 번을 입력하세요')
 
     # 선택된 mode에 해당하는 함수를 실행
     mode_function(mode)
