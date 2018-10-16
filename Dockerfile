@@ -2,6 +2,7 @@ FROM                python:3.6.5-slim
 MAINTAINER          nadcdc4@gmail.com
 
 
+
 RUN                 apt -y update && apt -y dist-upgrade
 
 RUN                 apt -y install build-essential
@@ -41,7 +42,7 @@ RUN             cp -f   /srv/project/.config/${BUILD_MODE}/nginx.conf \
                         /etc/nginx/sites-available/ && \
 
             # 이미 sites-enabled에 있던 모든 내용 삭제
-                rm -f   /etc/nginx/sites-enabled/* && \
+#                rm -f   /etc/nginx/sites-enabled/* && \
 
             # available에 있는 nginx_app.conf를 enabled로 링크.
                 ln -sf  /etc/nginx/sites-available/nginx_app.conf \
@@ -51,6 +52,10 @@ RUN             cp -f   /srv/project/.config/${BUILD_MODE}/nginx.conf \
 # Supervisor 설정복사
 RUN             cp -f ${PROJECT_DIR}/.config/${BUILD_MODE}/supervisor.conf \
                         /etc/supervisor/conf.d
+
+# 7000번 포트 open
+EXPOSE          7000
+
 
 # RUN supervisor
 CMD             supervisord -n
