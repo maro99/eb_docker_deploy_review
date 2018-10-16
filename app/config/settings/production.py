@@ -1,9 +1,11 @@
 from .base import *
 
+
+secrets = json.load(open(os.path.join(SECRET_DIR,'production.json')))
+
 DEBUG = False
-ALLOWED_HOSTS = [
-    'localhost',
-]
+ALLOWED_HOSTS =secrets['ALLOWED_HOSTS']
+
 
 WSGI_APPLICATION = 'config.wsgi.production.application'
 
