@@ -1,6 +1,8 @@
 from .base import *
+import sys
+from ..storages import S3DefaultStorage
 
-
+print(sys.argv)
 secrets = json.load(open(os.path.join(SECRET_DIR,'production.json')))
 
 DEBUG = False
@@ -8,20 +10,25 @@ ALLOWED_HOSTS =secrets['ALLOWED_HOSTS']
 
 
 WSGI_APPLICATION = 'config.wsgi.production.application'
+INSTALLED_APPS += [
+    'storages',
+]
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# DB
+DATABASES = secrets["DATABASES"]
 
-
-STATIC_URL = '/static/'
-
+# Media
+DEFAULT_FILE_STORAGE = "config.storages.S3DefaultStorage"
+AWS_STORAGE_BUCKET_NAME = secrets["AWS_STORAGE_BUCKET_NAME"]
 
 
 LOG_DIR = '/var/log/django'
+if not os.path.exists(LOG_DIR):
+    LOG_DIR = os.path.join(ROOT_DIR, '.log')
+    if not os.path.exists(LOG_DIR):
+        os.makedirs(LOG_DIR)
+
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

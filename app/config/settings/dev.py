@@ -1,5 +1,7 @@
 from .base import *
 
+secrets = json.load(open(os.path.join(SECRET_DIR, 'dev.json')))
+
 DEBUG = True
 ALLOWED_HOSTS = [
 
@@ -7,12 +9,13 @@ ALLOWED_HOSTS = [
 
 WSGI_APPLICATION = 'config.wsgi.dev.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+INSTALLED_APPS += [
+    'storages',
+]
 
+# DB
+DATABASES = secrets["DATABASES"]
 
-STATIC_URL = '/static/'
+# Media
+DEFAULT_FILE_STORAGE = "config.storages.S3DefaultStorage"
+AWS_STORAGE_BUCKET_NAME = secrets["AWS_STORAGE_BUCKET_NAME"]
