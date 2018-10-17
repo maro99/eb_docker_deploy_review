@@ -1,13 +1,15 @@
 from .base import *
 import sys
-from ..storages import S3DefaultStorage
 
 
 secrets = json.load(open(os.path.join(SECRET_DIR,'production.json')))
 
-RUNSERVER = sys.argv[1] == 'runserver'
+# Django가 runserver로 켜졌는지 확인
+RUNSERVER = 'runserver' in sys.argv
 DEBUG = False
 ALLOWED_HOSTS = secrets['ALLOWED_HOSTS']
+
+# runserver로 production환경을 실행할 경우
 if  RUNSERVER:
     DEBUG = True
     ALLOWED_HOSTS = [
@@ -29,15 +31,11 @@ DATABASES = secrets["DATABASES"]
 DEFAULT_FILE_STORAGE = "config.storages.S3DefaultStorage"
 AWS_STORAGE_BUCKET_NAME = secrets["AWS_STORAGE_BUCKET_NAME"]
 
-
-print(DEFAULT_FILE_STORAGE)
-print(AWS_STORAGE_BUCKET_NAME)
-
 LOG_DIR = '/var/log/django'
 if not os.path.exists(LOG_DIR):
     LOG_DIR = os.path.join(ROOT_DIR, '.log')
     if not os.path.exists(LOG_DIR):
-        os.makedirs(LOG_DIR)
+        os.makedirs(LOG_DIR , exist_ok=True )
 
 
 LOGGING = {
