@@ -9,6 +9,7 @@ RUNSERVER = sys.argv[1] == 'runserver'
 DEBUG = False
 ALLOWED_HOSTS = secrets['ALLOWED_HOSTS']
 if  RUNSERVER:
+    DEBUG = True
     ALLOWED_HOSTS = [
         'localhost',
         '127.0.0.1',
@@ -28,6 +29,9 @@ DATABASES = secrets["DATABASES"]
 DEFAULT_FILE_STORAGE = "config.storages.S3DefaultStorage"
 AWS_STORAGE_BUCKET_NAME = secrets["AWS_STORAGE_BUCKET_NAME"]
 
+
+print(DEFAULT_FILE_STORAGE)
+print(AWS_STORAGE_BUCKET_NAME)
 
 LOG_DIR = '/var/log/django'
 if not os.path.exists(LOG_DIR):
