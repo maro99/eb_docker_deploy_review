@@ -1,21 +1,5 @@
-FROM                python:3.6.5-slim
+FROM                nadcdc/fc-8th-eb-docker-review:base
 MAINTAINER          nadcdc4@gmail.com
-
-
-
-RUN                 apt -y update && apt -y dist-upgrade
-
-RUN                 apt -y install build-essential
-# nginx, supervisor install (uwsgi는 Pipfile에 기록)
-RUN                 apt -y install nginx supervisor
-
-# 로컬의 requriements.txt. 파일을 /srv 에 복사한 후 pip install 실행
-# (build 하는 환경에 requirements.txt 가 있어야 함.)
-COPY                ./requirements.txt /srv/
-RUN                 pip install -r /srv/requirements.txt
-
-
-
 
 # 이하 production에서 복사.
 
