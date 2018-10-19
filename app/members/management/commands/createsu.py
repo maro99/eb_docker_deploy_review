@@ -9,6 +9,7 @@ from config.settings.base import SECRET_DIR
 
 User = get_user_model()
 
+
 class Command(BaseCommand):
     def handle(self, *args, **option):
         secrets = json.load(open(os.path.join(SECRET_DIR, 'base.json')))
